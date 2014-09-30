@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{709a7430-705b-4dc0-8f49-802a931adec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC">
+      <UniqueIdentifier>{bb1a8971-6a61-4999-bfa7-2f38bc4eaddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\osc">
+      <UniqueIdentifier>{1b05f5d7-cabb-4de3-8396-c823b4619e37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\ip">
+      <UniqueIdentifier>{333851ae-7391-46a5-b815-837dee194e84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\ip\win32">
+      <UniqueIdentifier>{c3cbd3c3-b2df-4142-9d7c-7fd89904dc89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Utils">
+      <UniqueIdentifier>{bedc8062-f659-4119-aefd-b1637daeb168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Objects">
+      <UniqueIdentifier>{4528dc2e-e403-4419-a15d-b80a31587655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{cd4f68db-ed10-45e4-883f-acc019e95e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{a999f673-572b-40ad-95f7-fbdf7913d9a2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\DBCClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\OscListener.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\OscMessage.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\OscSender.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\OscBundle.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\osc\OscPrintReceivedElements.cpp">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\osc\OscReceivedElements.cpp">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\osc\OscTypes.cpp">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\osc\OscOutboundPacketStream.cpp">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\ip\IpEndpointName.cpp">
+      <Filter>Blocks\OSC\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\ip\win32\NetworkingUtils.cpp">
+      <Filter>Blocks\OSC\ip\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\blocks\osc\ip\win32\UdpSocket.cpp">
+      <Filter>Blocks\OSC\ip\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\AssetManager.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CubeMap.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OSCManager.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Room.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SpringCam.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Emitter.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PingPongFbo.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Skeleton.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rope.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ShaderManager.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resources\cinder_app_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\blocks\osc\OscBundle.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\OscListener.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\OscMessage.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\OscSender.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\OscArg.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscPacketListener.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscPrintReceivedElements.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscReceivedElements.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscTypes.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\MessageMappingOscPacketListener.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscException.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscHostEndianness.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\osc\OscOutboundPacketStream.h">
+      <Filter>Blocks\OSC\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\ip\TimerListener.h">
+      <Filter>Blocks\OSC\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\ip\UdpSocket.h">
+      <Filter>Blocks\OSC\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\ip\IpEndpointName.h">
+      <Filter>Blocks\OSC\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\ip\NetworkingUtils.h">
+      <Filter>Blocks\OSC\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\osc\ip\PacketListener.h">
+      <Filter>Blocks\OSC\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\DBCClient.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\AssetManager.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\CubeMap.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\OSCManager.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Room.h">
+      <Filter>Include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SpringCam.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Emitter.h">
+      <Filter>Include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\PingPongFbo.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Skeleton.h">
+      <Filter>Include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Rope.h">
+      <Filter>Include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ShaderManager.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

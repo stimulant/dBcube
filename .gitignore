@@ -1,0 +1,8 @@
+Server/node_modules/
+*.opensdf
+*.sdf
+*.suo
+*.user
+Client/vc2012/x64/
+Client/vc2012/Debug/
+Client/vc2012/Release/

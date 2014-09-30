@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for DBC.",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "Joel Pryde",
+  "license": "None",
+  "dependencies": {
+    "socket.io" : "0.9.16",
+    "node-osc" : "0.2.1",
+    "express" : "3.3.4"
+    },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
