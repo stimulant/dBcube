@@ -11,5 +11,8 @@ Decibel Cube
 1. Update Cinder via submodule by running 'git submodule update --init --recursive'.
 2. Switch to the dev branch and build 64bit binaries inside of Visual Studio.
 
-## Running Cube
+### Setup and run the Server
+1. See [the Server documentation](server/) for more details.
+
+## Run the Cube client
 1. Run DBCClient.exe.
