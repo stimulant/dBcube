@@ -4,6 +4,7 @@ var oscClients = new Array();
 var server;
 var lastClientIndex = -1;
 var lastClientUpdateElapsed = 0.0;
+var audioLevel = 0.0;
 
 function start(config, webServer)
 {
@@ -21,6 +22,14 @@ function start(config, webServer)
 	// receive messages
 	server.on("message", function (msg, rinfo)
 	{
+		//console.log("Recv Message:" + msg[2][0]);
+
+		if (msg[2][0] == "audioin")
+		{
+			//console.log("Recv Message:" + msg[2][1]);
+			audioLevel = msg[2][1];
+		}
+
 		if (msg[2][0] == "connect")
 		{
 			console.log("client " + msg[2][1] + " connected...");
@@ -90,10 +99,34 @@ function start(config, webServer)
 	var paramsRotateElapsed = 0;
 	var paramRotateIdx = 0;
 	var updateSocket = 0;
+	var audioDisabled = false;
+	var audioDisabledTimeout = 0.0;
 	var centerAttract = false;
 	var centerAttractElapsed = 0.0;
+
 	setInterval(function()
 	{
+		// disable audio after a period of quiet
+		if (audioLevel >= 0.1)
+		{
+			if (audioDisabled)
+			{
+				audioDisabled = false;
+				console.log("audio enabled");		
+			}
+			audioDisabledTimeout = 0.0;
+		}
+		else
+		{
+			audioDisabledTimeout += 1.0/30.0;
+			if (!audioDisabled && config.audio_disable_when_quiet &&
+				audioDisabledTimeout > config.audio_disable_timeout)
+			{
+				audioDisabled = true;
+				console.log("audio disabled");
+			}
+		}
+
 		// send config to clients
 		for (var i = 0; i < oscClients.length; i++)
 		{
@@ -106,6 +139,8 @@ function start(config, webServer)
 				config.clients[i].isTop ? 1 : 0,
 				config.clients[i].connectedTo
 			);
+
+			oscClients[i].send("audioUpdate", audioDisabled ? Math.abs(Math.sin(elapsed * 0.1)) : audioLevel);
 
 			// send top messages to client
 			if (config.clients[i].isTop)
