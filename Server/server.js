@@ -5,5 +5,5 @@ var WebServer = require('./lib/webServer.js').WebServer;
 config.config.paramsChanged = true;
 config.config.currentParam = "defaults";
 var webServer = new WebServer();
-webServer.start(config.config, config.params);
+webServer.start(config.config);
 oscServer.start(config.config, webServer);

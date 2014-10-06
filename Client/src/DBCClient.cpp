@@ -82,15 +82,6 @@ void DBCClient::setup()
 	ShaderManager::load("skelicleDraw", "shaders/skeliclesDraw.vert", "shaders/skeliclesDraw.frag");
 
 	// textures
-	mCubeMap		= CubeMap( GLsizei(512), GLsizei(512),
-						Surface8u( loadImage( loadAsset( "textures/cubePosX.jpg" ) ) ),
-						Surface8u( loadImage( loadAsset( "textures/cubePosY.jpg" ) ) ),
-						Surface8u( loadImage( loadAsset( "textures/cubePosZ.jpg" ) ) ),
-						Surface8u( loadImage( loadAsset( "textures/cubeNegX.jpg" ) ) ),
-						Surface8u( loadImage( loadAsset( "textures/cubeNegY.jpg" ) ) ),
-						Surface8u( loadImage( loadAsset( "textures/cubeNegZ.jpg" ) ) )
-						);
-
 	mRoomTexture = gl::Texture::create( loadImage( loadAsset( "textures/room.jpg" ) ) );
 	mRoomTextureName = "room.jpg";
 	mTagTexture = gl::Texture::create( loadImage( loadAsset( "textures/dbcube_tag.png" ) ) );
@@ -425,7 +416,7 @@ void DBCClient::update()
 		updateBodies();
 
 		// update room textures and colors
-		std::string roomTextureName = getStringParam("roomTextureSide" + std::to_string(mOSCManager.getClientIdx()+1));
+		std::string roomTextureName = getStringParam("roomTextureSide");
 		if (roomTextureName != "" && roomTextureName != mRoomTextureName)
 		{
 			bool success = true;
@@ -497,10 +488,8 @@ void DBCClient::draw()
 				gl::enableWireframe();
 	
 			ShaderManager::get("room")->bind();
-			mCubeMap.bind();
 			mRoomTexture->bind();
-			ShaderManager::get("room")->uniform( "cubeMap", 0 );
-			ShaderManager::get("room")->uniform( "roomMap", 1 );
+			ShaderManager::get("room")->uniform( "roomMap", 0 );
 			ShaderManager::get("room")->uniform( "mvpMatrix", mSpringCam.mMvpMatrix );
 			ShaderManager::get("room")->uniform( "mMatrix", m );
 			ShaderManager::get("room")->uniform( "eyePos", mSpringCam.mEye );
@@ -508,11 +497,10 @@ void DBCClient::draw()
 			ShaderManager::get("room")->uniform( "useRoomMap", getBoolParam("roomTexture") );
 			ShaderManager::get("room")->uniform( "power", getFloatParam("roomPower") );
 			ShaderManager::get("room")->uniform( "lightPower", getFloatParam("roomLightPower") );
-			ShaderManager::get("room")->uniform( "topColor", getColorParam("roomColorSide" + std::to_string(mOSCManager.getClientIdx()+1) ) );
+			ShaderManager::get("room")->uniform( "topColor", getColorParam("topColor") );
 			ShaderManager::get("room")->uniform( "audioLevel", (DBCClient::get()->getAudioLevel() * DBCClient::get()->getFloatParam("roomAudioMod")) + (1.0f - DBCClient::get()->getFloatParam("roomAudioMod") ) );
 			ShaderManager::get("room")->uniform( "timePer", mRoom.getTimePer() * 1.5f + 0.5f );
 			mRoom.draw();
-			mCubeMap.unbind();
 			mRoomTexture->unbind();
 			ShaderManager::get("room")->unbind();
 
@@ -557,10 +545,8 @@ void DBCClient::draw()
 			gl::enableDepthRead();
 			gl::enableDepthWrite();
 
-			mCubeMap.bind();
 			ShaderManager::get("sphere")->bind();
 			ShaderManager::get("sphere")->uniform( "audioLevel", mAudioLevel );
-			ShaderManager::get("sphere")->uniform( "cubeMap", 0 );
 			ShaderManager::get("sphere")->uniform( "mvpMatrix", mSpringCam.mMvpMatrix );
 			ShaderManager::get("sphere")->uniform( "eyePos", mSpringCam.getEye() );
 			ShaderManager::get("sphere")->uniform( "roomDims", mRoom.getDims() );
@@ -570,7 +556,7 @@ void DBCClient::draw()
 			for ( unsigned int i=0; i < mSkeletonCount; i++ )
 			{
 				if (i >= DBC_BODY_COUNT) break;
-				ShaderManager::get("sphere")->uniform( "color", getColorParam( "emitterColorSide" + std::to_string(mOSCManager.getClientIdx()+1) + "User" + std::to_string(i+1) ) );
+				ShaderManager::get("sphere")->uniform( "color", getColorParam( "emitterColorSide" + std::to_string(mOSCManager.getClientIdx()+1) ) );
 				mSkeletons[i].draw();
 			}
 
@@ -578,7 +564,7 @@ void DBCClient::draw()
 			for ( unsigned int i=0; i < mFarSkeletonCount; i++ )
 			{
 				if (i >= DBC_BODY_COUNT) break;
-				ShaderManager::get("sphere")->uniform( "color", getColorParam( "emitterColorSide" + std::to_string(mOSCManager.getConnectedTo()+1) + "User" + std::to_string(i+1) ) );
+				ShaderManager::get("sphere")->uniform( "color", getColorParam( "emitterColorSide" + std::to_string(mOSCManager.getConnectedTo()+1) ) );
 				mFarSkeletons[i].draw();
 			}
 

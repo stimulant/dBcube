@@ -29,7 +29,7 @@ void Skeleton::addSkelicles()
 		colorIdx -= 3;
 	}
 	
-	mColor = DBCClient::get()->getColorParam( "emitterColorSide" + std::to_string(sideIdx+1) + "User" + std::to_string(colorIdx+1) );
+	mColor = DBCClient::get()->getColorParam( "emitterColorSide" + std::to_string(sideIdx+1) );
 
 	// add skelicles for all bones
 	unsigned int shortBoneCount = 10;

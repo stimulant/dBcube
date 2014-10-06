@@ -1,4 +1,5 @@
 var osc = require('node-osc');
+var ce = require('cloneextend');
 
 var oscClients = new Array();
 var server;
@@ -193,8 +194,12 @@ function start(config, webServer)
 		if (config.paramsChanged)
 		{
 			console.log("paramsChanged: " + config.currentParam);
+
+			// make a merged copy of globals and current params
+			var sendParams = ce.cloneextend(config.globals, config.params[config.currentParam]);
+
 			for (var i = 0; i < oscClients.length; i++)
-				oscClients[i].send("updateparams", JSON.stringify(config.params[config.currentParam]));
+				oscClients[i].send("updateparams", JSON.stringify(sendParams));
 			config.paramsChanged = false;
 		}
 
