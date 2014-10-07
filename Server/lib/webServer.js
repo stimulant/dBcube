@@ -15,7 +15,7 @@ WebServer.prototype.updateClientHeartbeat = function(client)
 		client.heartbeat_count > this.config.client_restart_time)
 	{
 		// otherwise just try restarting the client app
-		console.log("Restarting client " + client.host);
+		console.log("Restarting client application on " + client.host);
 		this.killclient(client);
 		this.startclient(client);
 		client.heartbeat_count = 0;
@@ -45,8 +45,21 @@ WebServer.prototype.killclient = function(idx)
 	exec(cmdstr);
 };
 
+WebServer.prototype.restartclient = function(idx)
+{
+	var cmdstr = this.config.pstools_dir + '\\psshutdown.exe /accepteula \\\\' + this.clients[idx].host;
+	if (this.config.remote_user != "")
+		cmdstr += ' -u ' + this.config.remote_user
+	if (this.config.remote_pass != "")
+		cmdstr += ' -p ' + this.config.remote_pass;
+	cmdstr += ' -r';
+	console.log("RESTART CLIENT CMD: " + cmdstr);
+	exec(cmdstr);
+};
+
 WebServer.prototype.startall = function() { for (var c in this.clients) this.startclient(c); };
 WebServer.prototype.killall = function() { for (var c in this.clients) this.killclient(c); };
+WebServer.prototype.restartall = function() { for (var c in this.clients) this.restartclient(c); };
 
 WebServer.prototype.update = function()
 {
@@ -71,10 +84,12 @@ WebServer.prototype.connect = function (socket)
 	// control individual clients
 	socket.on('startclient', this.startclient.bind(this) );
 	socket.on('killclient', this.killclient.bind(this) );
+	socket.on('restartclient', this.restartclient.bind(this) );
 
 	// control all clients
 	socket.on('startall', this.startall.bind(this));
 	socket.on('killall', this.killall.bind(this));
+	socket.on('restartall', this.restartall.bind(this));
 
 	// user disconnects
 	socket.on('disconnect', function(){});

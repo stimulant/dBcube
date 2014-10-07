@@ -6,11 +6,11 @@ var currentParam;
 
 function startclient(clientidx) { socket.emit('startclient', clientidx); }
 function killclient(clientidx) { socket.emit('killclient', clientidx); }
-function updateclient(clientidx) { socket.emit('updateclient', clientidx); }
+function restartclient(clientidx) { socket.emit('restartclient', clientidx); }
 
 function startall() { socket.emit('startall'); }
 function killall() { socket.emit('killall'); }
-function updateall() { socket.emit('updateall'); }
+function restartall() { socket.emit('restartall'); }
 
 function updatestatus(data)
 {
@@ -27,7 +27,7 @@ function updatestatus(data)
       '<td id="client_connectedTo_' + i + '"/>' +
       '<td><button id="startbtn" onClick="startclient(' + i + ')">start</button></td>' +
       '<td><button id="killbtn" onClick="killclient(' + i + ')">kill</button></td>' +
-      '<td><button id="updatebtn" onClick="updateclient(' + i + ')">update</button></td>' +
+      '<td><button id="restartbtn" onClick="restartclient(' + i + ')">restart</button></td>' +
       '</tr>';
       $('#clients').append(tableHtml);
     }
