@@ -5,7 +5,7 @@ Run installer from [here](http://nodejs.org/).
 Run 'npm install' from the Server folder.
 
 # Configure Server
-Edit the defaults.json file in your Server folder with your favorite text editor (I use Sublime).  You will need to update these values to reflect the computers you will be running as clients and where certain files are located on your computer
+Edit the config.json file in your Server folder with your favorite text editor (I use Sublime).  You will need to update these values to reflect the computers you will be running as clients and where certain files are located on your computer
 
 | Value                                    | Description
 |------------------------------------------|------------
