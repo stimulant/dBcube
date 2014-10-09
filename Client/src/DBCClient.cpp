@@ -275,7 +275,7 @@ void DBCClient::updateBodies()
 		{
 			if (i != j)
 			{
-				Vec3f emitter2Pos = allEmitters[2]->getPos();
+				Vec3f emitter2Pos = allEmitters[j]->getPos();
 				mHandDist[i] = min(emitter1Pos.distance( emitter2Pos ), mHandDist[i]);
 				if (mHandDist[i] <= clapDistance && mLastHandDist[i] > clapDistance)
 				{
