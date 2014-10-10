@@ -35,7 +35,7 @@ class DBCClient : public ci::app::AppBasic
 	// Room
 	Room						mRoom;
 	gl::TextureRef				mRoomTexture;
-	gl::TextureRef				mTagTexture;
+	gl::TextureRef				mOverlayTexture;
 	std::string					mRoomTextureName;
 
 	// Emitters

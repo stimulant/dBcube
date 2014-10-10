@@ -84,7 +84,7 @@ void DBCClient::setup()
 	// textures
 	mRoomTexture = gl::Texture::create( loadImage( loadAsset( "textures/room.jpg" ) ) );
 	mRoomTextureName = "room.jpg";
-	mTagTexture = gl::Texture::create( loadImage( loadAsset( "textures/dbcube_tag.png" ) ) );
+	mOverlayTexture = gl::Texture::create( loadImage( loadAsset( "textures/overlay.png" ) ) );
 	
 	// camera
 	mSpringCam		= SpringCam( -getFloatParam("globalCameraDist"), APP_HEIGHT/APP_WIDTH );
@@ -588,7 +588,7 @@ void DBCClient::draw()
 
 			gl::setMatricesWindow(Vec2i(768,768), true); 
 			gl::color(ColorA::white());
-			gl::draw(mTagTexture, Vec2f(768.0f - 220.0f, 768.0f - 120.0f));
+			gl::draw(mOverlayTexture, Vec2f(0.0f, 0.0f));
 		}
 	
 		gl::disableWireframe();
