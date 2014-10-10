@@ -16,7 +16,9 @@
         "ribbonDisconnectedWind": 5,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 0,
-        "topColor": "660066"
+        "roomPower": 0.1,
+        "roomLightPower": 0.5,
+        "topColor": "660000"
     },
     "ms-2": {
         "roomTextureSide": "chevron-green.jpg",
@@ -35,6 +37,8 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
+        "roomPower": 0.5,
+        "roomLightPower": 0.5,
         "topColor": "C0FF3E"
     },
     "ms-3": {
@@ -54,6 +58,8 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
+        "roomPower": 0.5,
+        "roomLightPower": 0.5,
         "topColor": "00FFFF"
     }
 }

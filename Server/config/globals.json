@@ -12,8 +12,6 @@
     "roomDimX": 198,
     "roomDimY": 193,
     "roomDimZ": 150,
-    "roomPower": 0.5,
-    "roomLightPower": 0.5,
     "roomColorSide1": "00ffab",
     "roomColorSide2": "f5005d",
     "roomColorSide3": "000066",
