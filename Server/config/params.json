@@ -1,6 +1,6 @@
 {
     "defaults": {
-        "roomTextureSide": "side-c.jpg",
+        "roomTextureSide": "sic-cube-skin-03.png",
         "skeletonAlpha": 0.5,
         "skeletonScale": 1,
         "emitterColorSide1": "00ffab",
@@ -37,9 +37,9 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "C0FF3E"
+        "roomPower": 0.2,
+        "roomLightPower": 0.4,
+        "topColor": "22fda8"
     },
     "ms-3": {
         "roomTextureSide": "chevron-yellow.jpg",
@@ -58,18 +58,18 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
+        "roomPower": 0.3,
+        "roomLightPower": 0.4,
         "topColor": "fff000"
     },
     "SIC-1": {
         "roomTextureSide": "sic-cube-skin-02.png",
         "skeletonAlpha": 1,
         "skeletonScale": 2,
-        "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
+        "emitterColorSide1": "e4241a",
+        "emitterColorSide2": "01ddf3",
+        "emitterColorSide3": "e4241a",
+        "emitterColorSide4": "01ddf3",
         "ribbonStartSize": 5,
         "ribbonEndSize": 5,
         "ribbonLength": 1000,
@@ -79,18 +79,18 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "b9ffbc"
+        "roomPower": 0.1,
+        "roomLightPower": 0.2,
+        "topColor": "15e6df"
     },
     "SIC-2": {
         "roomTextureSide": "texture-04.jpg",
         "skeletonAlpha": 1,
         "skeletonScale": 2,
         "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
+        "emitterColorSide2": "01ddf3",
+        "emitterColorSide3": "000000",
+        "emitterColorSide4": "01ddf3",
         "ribbonStartSize": 5,
         "ribbonEndSize": 5,
         "ribbonLength": 1000,
@@ -100,18 +100,18 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "b4fbff"
+        "roomPower": 0.2,
+        "roomLightPower": 0.4,
+        "topColor": "ff6421"
     },
     "SIC-3": {
         "roomTextureSide": "texture-06.jpg",
         "skeletonAlpha": 1,
         "skeletonScale": 2,
-        "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
+        "emitterColorSide1": "01ddf3",
+        "emitterColorSide2": "e4241a",
+        "emitterColorSide3": "01ddf3",
+        "emitterColorSide4": "e4241a",
         "ribbonStartSize": 5,
         "ribbonEndSize": 5,
         "ribbonLength": 1000,
@@ -121,18 +121,18 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "169939"
+        "roomPower": 0.2,
+        "roomLightPower": 0.4,
+        "topColor": "01ddf3"
     },
     "SIC-4": {
         "roomTextureSide": "texture-15.jpg",
         "skeletonAlpha": 1,
         "skeletonScale": 2,
-        "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
+        "emitterColorSide1": "01ddf3",
+        "emitterColorSide2": "FF0000",
+        "emitterColorSide3": "000000",
+        "emitterColorSide4": "ff6421",
         "ribbonStartSize": 5,
         "ribbonEndSize": 5,
         "ribbonLength": 1000,
@@ -142,18 +142,18 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "cdf4dd"
+        "roomPower": 0.2,
+        "roomLightPower": 0.6,
+        "topColor": "01ddf3"
     },
     "SIC-5": {
         "roomTextureSide": "texture-16.jpg",
         "skeletonAlpha": 1,
         "skeletonScale": 2,
-        "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
+        "emitterColorSide1": "ff6421",
+        "emitterColorSide2": "01ddf3",
+        "emitterColorSide3": "ff6421",
+        "emitterColorSide4": "01ddf3",
         "ribbonStartSize": 5,
         "ribbonEndSize": 5,
         "ribbonLength": 1000,
@@ -163,12 +163,12 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
+        "roomPower": 0.13,
         "roomLightPower": 0.5,
-        "topColor": "00f0ff"
+        "topColor": "159838"
     },
     "STM-1": {
-        "roomTextureSide": "side-C.jpg",
+        "roomTextureSide": "sic-cube-skin-03.png",
         "skeletonAlpha": 0.5,
         "skeletonScale": 20,
         "emitterColorSide1": "000000",
@@ -184,8 +184,8 @@
         "ribbonDisconnectedWind": 10,
         "ribbonDisconnectedGravity": 1,
         "ribbonAlphaFade": 1,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "C0FF3E"
+        "roomPower": 0.2,
+        "roomLightPower": 0.6,
+        "topColor": "d2ff00"
     }
 }
