@@ -12,7 +12,8 @@
   "dependencies": {
     "socket.io" : "0.9.16",
     "node-osc" : "0.2.1",
-    "express" : "3.3.4"
+    "express" : "3.3.4",
+    "cloneextend" : "0.0.3"
     },
   "repository": {
     "type": "git",
