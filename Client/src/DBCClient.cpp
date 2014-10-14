@@ -85,6 +85,7 @@ void DBCClient::setup()
 	mRoomTexture = gl::Texture::create( loadImage( loadAsset( "textures/room.jpg" ) ) );
 	mRoomTextureName = "room.jpg";
 	mOverlayTexture = gl::Texture::create( loadImage( loadAsset( "textures/overlay.png" ) ) );
+	mOverlayTextureName = "overlay.jpg";
 	
 	// camera
 	mSpringCam		= SpringCam( -getFloatParam("globalCameraDist"), APP_HEIGHT/APP_WIDTH );
@@ -434,6 +435,28 @@ void DBCClient::update()
 			{
 				mRoomTextureName = roomTextureName;
 				mRoomTexture = newRoomTexture;
+			}
+		}
+
+		// update overlay texture
+		std::string overlayTextureName = getStringParam("screenOverlay");
+		if (overlayTextureName != "" && overlayTextureName != mOverlayTextureName)
+		{
+			bool success = true;
+			gl::TextureRef newOverlayTexture = mOverlayTexture;
+			try
+			{
+				newOverlayTexture = gl::Texture::create( loadImage( loadAsset( "textures/" + overlayTextureName ) ) );
+			} 
+			catch( Exception e ) 
+			{
+				success = false;
+				app::console() << e.what() << endl;
+			}
+			if (success)
+			{
+				mOverlayTextureName = overlayTextureName;
+				mOverlayTexture = newOverlayTexture;
 			}
 		}
 

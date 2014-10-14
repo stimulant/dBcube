@@ -1,67 +1,4 @@
 {
-    "defaults": {
-        "roomTextureSide": "sic-cube-skin-03.png",
-        "skeletonAlpha": 0.5,
-        "skeletonScale": 1,
-        "emitterColorSide1": "00ffab",
-        "emitterColorSide2": "f5005d",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "E10098",
-        "ribbonStartSize": 20,
-        "ribbonEndSize": 20,
-        "ribbonLength": 1000,
-        "ribbonTwistSpeed": 1,
-        "ribbonConnectedWind": 0,
-        "ribbonConnectedGravity": 0,
-        "ribbonDisconnectedWind": 5,
-        "ribbonDisconnectedGravity": 1,
-        "ribbonAlphaFade": 0,
-        "roomPower": 0.5,
-        "roomLightPower": 0.5,
-        "topColor": "660066"
-    },
-    "ms-2": {
-        "roomTextureSide": "chevron-green.jpg",
-        "skeletonAlpha": 0.5,
-        "skeletonScale": 20,
-        "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
-        "ribbonStartSize": 20,
-        "ribbonEndSize": 20,
-        "ribbonLength": 1000,
-        "ribbonTwistSpeed": 3,
-        "ribbonConnectedWind": 10,
-        "ribbonConnectedGravity": 1,
-        "ribbonDisconnectedWind": 10,
-        "ribbonDisconnectedGravity": 1,
-        "ribbonAlphaFade": 1,
-        "roomPower": 0.2,
-        "roomLightPower": 0.4,
-        "topColor": "22fda8"
-    },
-    "ms-3": {
-        "roomTextureSide": "chevron-yellow.jpg",
-        "skeletonAlpha": 1,
-        "skeletonScale": 2,
-        "emitterColorSide1": "000000",
-        "emitterColorSide2": "ffffff",
-        "emitterColorSide3": "E10098",
-        "emitterColorSide4": "FFFF00",
-        "ribbonStartSize": 5,
-        "ribbonEndSize": 5,
-        "ribbonLength": 1000,
-        "ribbonTwistSpeed": 5,
-        "ribbonConnectedWind": 10,
-        "ribbonConnectedGravity": 1,
-        "ribbonDisconnectedWind": 10,
-        "ribbonDisconnectedGravity": 1,
-        "ribbonAlphaFade": 1,
-        "roomPower": 0.3,
-        "roomLightPower": 0.4,
-        "topColor": "fff000"
-    },
     "SIC-1": {
         "roomTextureSide": "sic-cube-skin-02.png",
         "skeletonAlpha": 1,
@@ -81,6 +18,7 @@
         "ribbonAlphaFade": 1,
         "roomPower": 0.1,
         "roomLightPower": 0.2,
+        "screenOverlay": "overlay.png",
         "topColor": "15e6df"
     },
     "SIC-2": {
@@ -102,6 +40,7 @@
         "ribbonAlphaFade": 1,
         "roomPower": 0.2,
         "roomLightPower": 0.4,
+        "screenOverlay": "overlay.png",
         "topColor": "ff6421"
     },
     "SIC-3": {
@@ -123,6 +62,7 @@
         "ribbonAlphaFade": 1,
         "roomPower": 0.2,
         "roomLightPower": 0.4,
+        "screenOverlay": "overlay.png",
         "topColor": "01ddf3"
     },
     "SIC-4": {
@@ -144,6 +84,7 @@
         "ribbonAlphaFade": 1,
         "roomPower": 0.2,
         "roomLightPower": 0.6,
+        "screenOverlay": "overlay.png",
         "topColor": "01ddf3"
     },
     "SIC-5": {
@@ -165,6 +106,7 @@
         "ribbonAlphaFade": 1,
         "roomPower": 0.13,
         "roomLightPower": 0.5,
+        "screenOverlay": "overlay.png",
         "topColor": "159838"
     },
     "STM-1": {
@@ -186,6 +128,7 @@
         "ribbonAlphaFade": 1,
         "roomPower": 0.2,
         "roomLightPower": 0.6,
+        "screenOverlay": "overlay_STM_TR.png",
         "topColor": "d2ff00"
     }
 }

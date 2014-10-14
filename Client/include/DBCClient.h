@@ -35,8 +35,11 @@ class DBCClient : public ci::app::AppBasic
 	// Room
 	Room						mRoom;
 	gl::TextureRef				mRoomTexture;
-	gl::TextureRef				mOverlayTexture;
 	std::string					mRoomTextureName;
+
+	// Overlay
+	gl::TextureRef				mOverlayTexture;
+	std::string					mOverlayTextureName;
 
 	// Emitters
 	bool						mMouseDown;
