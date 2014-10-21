@@ -84,7 +84,7 @@ void DBCClient::setup()
 	// textures
 	mRoomTexture = gl::Texture::create( loadImage( loadAsset( "textures/room.jpg" ) ) );
 	mRoomTextureName = "room.jpg";
-	mOverlayTexture = gl::Texture::create( loadImage( loadAsset( "textures/overlay.png" ) ) );
+	mOverlayTexture = gl::Texture::create( loadImage( loadAsset( "textures/overlay_STM_TR.png" ) ) );
 	mOverlayTextureName = "overlay.jpg";
 	
 	// camera
