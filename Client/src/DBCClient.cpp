@@ -40,14 +40,58 @@ void DBCClient::prepareSettings( Settings* settings )
 	settings->setFrameRate( 60.0f );
 }
 
-void DBCClient::setup()
-{	
-	gl::enable( GL_TEXTURE_2D );
-	mMouseDown = false;
-	mAddedSkelicles = false;
-	mMouseDownPos = Vec2f::zero();
-	mMouseOffset = Vec2f::zero();
-	setFullScreen( true );
+void DBCClient::setupKinect()
+{
+#if USE_KINECT1
+
+	mNuiSensor = NULL;
+    INuiSensor * pNuiSensor = NULL;
+    int iSensorCount = 0;
+    HRESULT hr = NuiGetSensorCount(&iSensorCount);
+    if (FAILED(hr))
+        return;
+
+    // Look at each Kinect sensor
+    for (int i = 0; i < iSensorCount; ++i)
+    {
+        // Create the sensor so we can check status, if we can't create it, move on to the next
+        hr = NuiCreateSensorByIndex(i, &pNuiSensor);
+        if (FAILED(hr))
+            continue;
+
+        // Get the status of the sensor, and if connected, then we can initialize it
+        hr = pNuiSensor->NuiStatus();
+        if (S_OK == hr)
+        {
+            mNuiSensor = pNuiSensor;
+            break;
+        }
+
+        // This sensor wasn't OK, so release it since we're not using it
+        pNuiSensor->Release();
+    }
+
+    if (NULL != mNuiSensor)
+    {
+        // Initialize the Kinect and specify that we'll be using skeleton
+        hr = mNuiSensor->NuiInitialize(NUI_INITIALIZE_FLAG_USES_SKELETON); 
+        if (SUCCEEDED(hr))
+        {
+            // Create an event that will be signaled when skeleton data is available
+            mNextSkeletonEvent = CreateEventW(NULL, TRUE, FALSE, NULL);
+
+            // Open a skeleton stream to receive skeleton data
+            hr = mNuiSensor->NuiSkeletonTrackingEnable(mNextSkeletonEvent, 0); 
+        }
+    }
+
+    if (NULL == mNuiSensor || FAILED(hr))
+	{
+		// failed to find kinect, probably should do some error reporting here
+        return;
+	}
+	
+#else
 
 	HRESULT hr = GetDefaultKinectSensor(&mKinectSensor);
     if (SUCCEEDED(hr) && mKinectSensor)
@@ -64,6 +108,21 @@ void DBCClient::setup()
 			hr = mBodyFrameReader->SubscribeFrameArrived(&mKinectFrameEvent);
         SafeRelease(pBodyFrameSource);
     }
+
+#endif
+}
+
+void DBCClient::setup()
+{	
+	gl::enable( GL_TEXTURE_2D );
+	mMouseDown = false;
+	mAddedSkelicles = false;
+	mMouseDownPos = Vec2f::zero();
+	mMouseOffset = Vec2f::zero();
+	setFullScreen( true );
+
+	// setup kinect
+	setupKinect();
 
 	Emitter::setupParticles();
 	Skeleton::setupSkelicles();
@@ -169,6 +228,29 @@ void DBCClient::updateKinect()
 		mSkeletonCount = 0;
 		return;
 	}
+
+#if USE_KINECT1
+	NUI_SKELETON_FRAME skeletonFrame = {0};
+    HRESULT hr = mNuiSensor->NuiSkeletonGetNextFrame(0, &skeletonFrame);
+    if ( FAILED(hr) )
+        return;
+
+    // smooth out the skeleton data
+    mNuiSensor->NuiTransformSmooth(&skeletonFrame, NULL);
+
+	// get skeletons
+	mSkeletonCount = 0;
+    for (int i = 0 ; i < NUI_SKELETON_COUNT; ++i)
+    {
+        NUI_SKELETON_TRACKING_STATE trackingState = skeletonFrame.SkeletonData[i].eTrackingState;
+        if (NUI_SKELETON_TRACKED == trackingState)
+        {
+			mSkeletons[mSkeletonCount].update(skeletonFrame.SkeletonData[i]);
+			mSkeletonCount++;
+        }
+    }
+
+#else
 	DWORD dwResult = WaitForSingleObjectEx(reinterpret_cast<HANDLE>(mKinectFrameEvent), 0, FALSE);
     if (WAIT_OBJECT_0 != dwResult)
 	{
@@ -217,6 +299,7 @@ void DBCClient::updateKinect()
     }
 	
     SafeRelease(pBodyFrame);
+#endif
 }
 
 

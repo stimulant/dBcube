@@ -7,6 +7,18 @@
 #include "PingPongFbo.h"
 #include "SpringCam.h"
 
+#define USE_KINECT1 1
+
+// kinect headers
+#if USE_KINECT1
+	#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+	#include <windows.h>
+	#include <Shlobj.h>
+	#include "NuiApi.h"
+#else
+	#include "Kinect.h"
+#endif
+
 class Skeleton
 {
 	unsigned int mIndex;
@@ -41,7 +53,13 @@ class Skeleton
 	ci::Vec3f	getJointPos( JointType jointType );
 	HandState	getLeftHandState() { return mLeftHandState; }
 	HandState	getRightHandState() { return mRightHandState; }
+
+#if USE_KINECT1
+	void	update( NUI_SKELETON_DATA skeletonData );
+#else
 	void	update( IBody* pBody );
+#endif
+	
 	void	update( const ci::Vec3f farJoints[JointType_Count] );
 	void	draw();
 };

@@ -69,6 +69,33 @@ void Skeleton::addSkelicles()
 	addSkelicles( JointType_AnkleLeft, JointType_FootLeft, shortBoneCount );	
 }
 
+#if USE_KINECT1
+
+void Skeleton::update( NUI_SKELETON_DATA skeletonData )
+{
+	mBodyCoordScale = Vec3f( DBCClient::get()->getFloatParam("skeletonPosScaleX"), 
+		DBCClient::get()->getFloatParam("skeletonPosScaleY"), 
+		DBCClient::get()->getFloatParam("skeletonPosScaleZ") );
+	mBodyCoordOffset = Vec3f( DBCClient::get()->getFloatParam("skeletonPosOffsetX"), 
+		DBCClient::get()->getFloatParam("skeletonPosOffsetY"), 
+		DBCClient::get()->getFloatParam("skeletonPosOffsetZ") );
+	mSmoothAmount = DBCClient::get()->getFloatParam("skeletonSmoothing");
+	mSmoothOnlyHands = DBCClient::get()->getBoolParam("skeletonSmoothOnlyHands");
+	mScale = DBCClient::get()->getFloatParam("skeletonScale");
+	mHeadScale = DBCClient::get()->getFloatParam("skeletonHeadScale");
+	
+	// update and smooth joint positions
+	for (int j = 0; j < JointType_Count; ++j)
+	{	
+		Vec3f jointPos = Vec3f(skeletonData.SkeletonPositions[j].x, skeletonData.SkeletonPositions[j].y, skeletonData.SkeletonPositions[j].z);
+		if (!mSmoothOnlyHands)
+			mJointPositions[(JointType)j] = (jointPos * mBodyCoordScale + mBodyCoordOffset) * (1.0f - mSmoothAmount) + mJointPositions[(JointType)j] * mSmoothAmount;
+		mJointPositions[(JointType)j].z = 0.0f;
+	}
+}
+
+#else
+
 void Skeleton::update( IBody* pBody )
 {
 	pBody->get_HandLeftState(&mLeftHandState);
@@ -101,6 +128,8 @@ void Skeleton::update( IBody* pBody )
 		}
 	}
 }
+
+#endif
 
 void Skeleton::update( const Vec3f farJoints[JointType_Count] )
 {

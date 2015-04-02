@@ -9,7 +9,6 @@
 #include "cinder/gl/Vbo.h"
 #include "cinder/Json.h"
 
-#include "Kinect.h"
 #include "OSCManager.h"
 #include "PingPongFbo.h"
 
@@ -27,10 +26,16 @@ class DBCClient : public ci::app::AppBasic
 	static DBCClient*			sInstance;
 
 	// Kinect
+#if USE_KINECT1
+    INuiSensor*					mNuiSensor;
+	HANDLE						mSkeletonStreamHandle;
+    HANDLE						mNextSkeletonEvent;
+#else
 	IKinectSensor*				mKinectSensor;
     ICoordinateMapper*			mCoordinateMapper;
     IBodyFrameReader*			mBodyFrameReader;
 	WAITABLE_HANDLE				mKinectFrameEvent;
+#endif
 
 	// Room
 	Room						mRoom;
@@ -79,6 +84,7 @@ class DBCClient : public ci::app::AppBasic
 	OSCManager					mOSCManager;
 	float						mAudioLevel;
 
+	void						setupKinect();
 	void						mouseDown( MouseEvent event );
 	void						mouseUp( MouseEvent event );
 	void						mouseDrag( MouseEvent event );
