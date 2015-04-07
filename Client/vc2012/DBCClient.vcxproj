@@ -225,6 +225,7 @@
     <ClCompile Include="..\blocks\osc\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\blocks\osc\osc\OscTypes.cpp" />
     <ClCompile Include="..\src\AssetManager.cpp" />
+    <ClCompile Include="..\src\Config.cpp" />
     <ClCompile Include="..\src\CubeMap.cpp" />
     <ClCompile Include="..\src\DBCClient.cpp" />
     <ClCompile Include="..\src\Emitter.cpp" />
@@ -272,6 +273,7 @@
     <ClInclude Include="..\include\ShaderManager.h" />
     <ClInclude Include="..\include\Skeleton.h" />
     <ClInclude Include="..\include\SpringCam.h" />
+    <ClInclude Include="..\src\Config.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

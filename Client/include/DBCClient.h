@@ -11,6 +11,7 @@
 
 #include "OSCManager.h"
 #include "PingPongFbo.h"
+#include "Config.h"
 
 #include "CubeMap.h"
 #include "Room.h"
@@ -24,6 +25,11 @@
 class DBCClient : public ci::app::AppBasic 
 {
 	static DBCClient*			sInstance;
+	
+	// Config
+	ConfigRef					mConfig;
+	unsigned int				mWindowWidth;
+	unsigned int				mWindowHeight;
 
 	// Kinect
 #if USE_KINECT1
@@ -84,6 +90,7 @@ class DBCClient : public ci::app::AppBasic
 	OSCManager					mOSCManager;
 	float						mAudioLevel;
 
+	void						updateConfigSettings();
 	void						setupKinect();
 	void						mouseDown( MouseEvent event );
 	void						mouseUp( MouseEvent event );

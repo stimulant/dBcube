@@ -36,6 +36,39 @@ void Skeleton::addSkelicles()
 	unsigned int medBoneCount = 20;
 	unsigned int longBoneCount = 30;
 
+#if USE_KINECT1
+
+	// Render Torso
+	addSkelicles( (JointType)NUI_SKELETON_POSITION_HEAD, (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, shortBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, (JointType)NUI_SKELETON_POSITION_SHOULDER_LEFT, shortBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, (JointType)NUI_SKELETON_POSITION_SHOULDER_RIGHT, shortBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, (JointType)NUI_SKELETON_POSITION_SPINE, medBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_SPINE, (JointType)NUI_SKELETON_POSITION_HIP_CENTER, medBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_CENTER, (JointType)NUI_SKELETON_POSITION_HIP_LEFT, shortBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_CENTER, (JointType)NUI_SKELETON_POSITION_HIP_RIGHT, shortBoneCount );
+
+    // Left Arm
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_LEFT, (JointType)NUI_SKELETON_POSITION_ELBOW_LEFT, medBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_ELBOW_LEFT, (JointType)NUI_SKELETON_POSITION_WRIST_LEFT, medBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_WRIST_LEFT, (JointType)NUI_SKELETON_POSITION_HAND_LEFT, shortBoneCount );
+
+    // Right Arm
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_RIGHT, (JointType)NUI_SKELETON_POSITION_ELBOW_RIGHT, medBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_ELBOW_RIGHT, (JointType)NUI_SKELETON_POSITION_WRIST_RIGHT, medBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_WRIST_RIGHT, (JointType)NUI_SKELETON_POSITION_HAND_RIGHT, shortBoneCount );
+
+    // Left Leg
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_LEFT, (JointType)NUI_SKELETON_POSITION_KNEE_LEFT, longBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_KNEE_LEFT, (JointType)NUI_SKELETON_POSITION_ANKLE_LEFT, longBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_ANKLE_LEFT, (JointType)NUI_SKELETON_POSITION_FOOT_LEFT, shortBoneCount );
+
+    // Right Leg
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_RIGHT, (JointType)NUI_SKELETON_POSITION_KNEE_RIGHT, longBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_KNEE_RIGHT, (JointType)NUI_SKELETON_POSITION_ANKLE_RIGHT, longBoneCount );
+    addSkelicles( (JointType)NUI_SKELETON_POSITION_ANKLE_RIGHT, (JointType)NUI_SKELETON_POSITION_FOOT_RIGHT, shortBoneCount );
+
+#else
+
 	// Torso
 	addSkelicles( JointType_Head, JointType_Neck, shortBoneCount );
 	addSkelicles( JointType_Neck, JointType_SpineShoulder, shortBoneCount );
@@ -67,7 +100,30 @@ void Skeleton::addSkelicles()
 	addSkelicles( JointType_HipLeft, JointType_KneeLeft, longBoneCount );
 	addSkelicles( JointType_KneeLeft, JointType_AnkleLeft, longBoneCount );
 	addSkelicles( JointType_AnkleLeft, JointType_FootLeft, shortBoneCount );	
+#endif
 }
+
+/*
+	NUI_SKELETON_POSITION_SPINE
+	NUI_SKELETON_POSITION_SHOULDER_CENTER
+	NUI_SKELETON_POSITION_HEAD
+	NUI_SKELETON_POSITION_SHOULDER_LEFT
+	NUI_SKELETON_POSITION_ELBOW_LEFT
+	NUI_SKELETON_POSITION_WRIST_LEFT
+	NUI_SKELETON_POSITION_HAND_LEFT
+	NUI_SKELETON_POSITION_SHOULDER_RIGHT
+	NUI_SKELETON_POSITION_ELBOW_RIGHT
+	NUI_SKELETON_POSITION_WRIST_RIGHT
+	NUI_SKELETON_POSITION_HAND_RIGHT
+	NUI_SKELETON_POSITION_HIP_LEFT
+	NUI_SKELETON_POSITION_KNEE_LEFT
+	NUI_SKELETON_POSITION_ANKLE_LEFT
+	NUI_SKELETON_POSITION_FOOT_LEFT
+	NUI_SKELETON_POSITION_HIP_RIGHT
+	NUI_SKELETON_POSITION_KNEE_RIGHT
+	NUI_SKELETON_POSITION_ANKLE_RIGHT
+	NUI_SKELETON_POSITION_FOOT_RIGHT
+*/
 
 #if USE_KINECT1
 
@@ -90,6 +146,8 @@ void Skeleton::update( NUI_SKELETON_DATA skeletonData )
 		Vec3f jointPos = Vec3f(skeletonData.SkeletonPositions[j].x, skeletonData.SkeletonPositions[j].y, skeletonData.SkeletonPositions[j].z);
 		if (!mSmoothOnlyHands)
 			mJointPositions[(JointType)j] = (jointPos * mBodyCoordScale + mBodyCoordOffset) * (1.0f - mSmoothAmount) + mJointPositions[(JointType)j] * mSmoothAmount;
+		else
+			mJointPositions[(JointType)j] = (jointPos * mBodyCoordScale + mBodyCoordOffset);
 		mJointPositions[(JointType)j].z = 0.0f;
 	}
 }
@@ -181,7 +239,7 @@ void Skeleton::draw()
 		drawBone( JointType_SpineBase, JointType_HipRight );
 		drawBone( JointType_SpineBase, JointType_HipLeft );
 
-		// Right Arm    
+		// Right Arm
 		drawBone( JointType_ShoulderRight, JointType_ElbowRight );
 		drawBone( JointType_ElbowRight, JointType_WristRight );
 		drawBone( JointType_WristRight, JointType_HandRight );

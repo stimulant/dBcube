@@ -112,6 +112,16 @@ void DBCClient::setupKinect()
 #endif
 }
 
+void DBCClient::updateConfigSettings()
+{
+	mWindowWidth = (*mConfig)["display"]["windowWidth"].getValue<int>();
+	mWindowHeight = (*mConfig)["display"]["windowHeight"].getValue<int>();
+
+	// camera
+	mSpringCam		= SpringCam( -getFloatParam("globalCameraDist"), (float)mWindowHeight/(float)mWindowWidth );
+	mSpringCam.setEye( Vec3f(0.0f, 0.0f, -getFloatParam("globalCameraDist") ) );
+}
+
 void DBCClient::setup()
 {	
 	gl::enable( GL_TEXTURE_2D );
@@ -119,7 +129,19 @@ void DBCClient::setup()
 	mAddedSkelicles = false;
 	mMouseDownPos = Vec2f::zero();
 	mMouseOffset = Vec2f::zero();
-	setFullScreen( true );
+
+	// setup config file (do this after prepareSettings so console can pickup errors with json)
+	AssetManager::load( "config.json", [this](DataSourceRef dataSource){
+	try {
+		mConfig = Config::create( dataSource );
+		updateConfigSettings();
+	} catch ( JsonTree::ExcJsonParserError boom ) {
+		throw boom;
+	}
+	} );
+
+	if (!IsDebuggerPresent())
+		setFullScreen( true );
 
 	// setup kinect
 	setupKinect();
@@ -230,6 +252,7 @@ void DBCClient::updateKinect()
 	}
 
 #if USE_KINECT1
+
 	NUI_SKELETON_FRAME skeletonFrame = {0};
     HRESULT hr = mNuiSensor->NuiSkeletonGetNextFrame(0, &skeletonFrame);
     if ( FAILED(hr) )
@@ -251,6 +274,7 @@ void DBCClient::updateKinect()
     }
 
 #else
+
 	DWORD dwResult = WaitForSingleObjectEx(reinterpret_cast<HANDLE>(mKinectFrameEvent), 0, FALSE);
     if (WAIT_OBJECT_0 != dwResult)
 	{
@@ -299,6 +323,7 @@ void DBCClient::updateKinect()
     }
 	
     SafeRelease(pBodyFrame);
+
 #endif
 }
 
@@ -560,15 +585,15 @@ void DBCClient::draw()
 		mAddedSkelicles = true;
 	}
 
-	Vec2f startPos = Vec2f(getWindowWidth()/2.0f - 768/2.0f, getWindowHeight()/2.0f - 768/2.0f);
-	gl::setViewport( Area((int)startPos.x, (int)startPos.y, (int)startPos.x + 768, (int)startPos.y + 768) );
+	Vec2f startPos = Vec2f(getWindowWidth()/2.0f - mWindowWidth/2.0f, getWindowHeight()/2.0f - mWindowHeight/2.0f);
+	gl::setViewport( Area((int)startPos.x, (int)startPos.y, (int)startPos.x + mWindowWidth, (int)startPos.y + mWindowHeight) );
 	gl::clear( ColorA( 0.0f, 0.0f, 0.0f, 1.0f ), true );
 
 	if (mOSCManager.getIsTop())
 	{
 		gl::color(mTopColor);
 		gl::enableAlphaBlending();
-		gl::drawSolidRect(Rectf(0, 0, 768 * 2.0, 768));
+		gl::drawSolidRect(Rectf(0, 0, mWindowWidth * 2.0, mWindowHeight));
 		gl::disableAlphaBlending();
 	}
 	else
@@ -692,7 +717,7 @@ void DBCClient::draw()
 			gl::disableDepthRead();
 			gl::disableDepthWrite();
 
-			gl::setMatricesWindow(Vec2i(768,768), true); 
+			gl::setMatricesWindow(Vec2i(mWindowWidth, mWindowHeight), true); 
 			gl::color(ColorA::white());
 			gl::draw(mOverlayTexture, Vec2f(0.0f, 0.0f));
 		}

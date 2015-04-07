@@ -108,6 +108,9 @@
     <ClCompile Include="..\src\ShaderManager.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Config.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\cinder_app_icon.ico">
@@ -205,6 +208,9 @@
       <Filter>Include\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\ShaderManager.h">
+      <Filter>Include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Config.h">
       <Filter>Include\Utils</Filter>
     </ClInclude>
   </ItemGroup>
