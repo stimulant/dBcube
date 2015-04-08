@@ -114,7 +114,8 @@
       <AdditionalIncludeDirectories>..\..\Cinder\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
-      <Command>xcopy "$(KINECTSDK20_DIR)\Assemblies\*.dll" "$(ProjectDir)bin\" /Y /C</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -177,7 +178,8 @@
       <AdditionalIncludeDirectories>..\..\Cinder\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
-      <Command>xcopy "$(KINECTSDK20_DIR)\Assemblies\*.dll" "$(ProjectDir)bin\" /Y /C</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
