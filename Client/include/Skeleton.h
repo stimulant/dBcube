@@ -2,7 +2,6 @@
 #include "cinder/gl/GlslProg.h"
 #include "cinder/gl/Fbo.h"
 #include "cinder/gl/Vbo.h"
-#include "Kinect.h"
 #include "Room.h"
 #include "PingPongFbo.h"
 #include "SpringCam.h"
