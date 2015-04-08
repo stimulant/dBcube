@@ -39,33 +39,33 @@ void Skeleton::addSkelicles()
 #if USE_KINECT1
 
 	// Render Torso
-	addSkelicles( (JointType)NUI_SKELETON_POSITION_HEAD, (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, shortBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, (JointType)NUI_SKELETON_POSITION_SHOULDER_LEFT, shortBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, (JointType)NUI_SKELETON_POSITION_SHOULDER_RIGHT, shortBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_CENTER, (JointType)NUI_SKELETON_POSITION_SPINE, medBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_SPINE, (JointType)NUI_SKELETON_POSITION_HIP_CENTER, medBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_CENTER, (JointType)NUI_SKELETON_POSITION_HIP_LEFT, shortBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_CENTER, (JointType)NUI_SKELETON_POSITION_HIP_RIGHT, shortBoneCount );
+	addSkelicles( (unsigned int)NUI_SKELETON_POSITION_HEAD, (unsigned int)NUI_SKELETON_POSITION_SHOULDER_CENTER, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_SHOULDER_CENTER, (unsigned int)NUI_SKELETON_POSITION_SHOULDER_LEFT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_SHOULDER_CENTER, (unsigned int)NUI_SKELETON_POSITION_SHOULDER_RIGHT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_SHOULDER_CENTER, (unsigned int)NUI_SKELETON_POSITION_SPINE, medBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_SPINE, (unsigned int)NUI_SKELETON_POSITION_HIP_CENTER, medBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_HIP_CENTER, (unsigned int)NUI_SKELETON_POSITION_HIP_LEFT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_HIP_CENTER, (unsigned int)NUI_SKELETON_POSITION_HIP_RIGHT, shortBoneCount );
 
     // Left Arm
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_LEFT, (JointType)NUI_SKELETON_POSITION_ELBOW_LEFT, medBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_ELBOW_LEFT, (JointType)NUI_SKELETON_POSITION_WRIST_LEFT, medBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_WRIST_LEFT, (JointType)NUI_SKELETON_POSITION_HAND_LEFT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_SHOULDER_LEFT, (unsigned int)NUI_SKELETON_POSITION_ELBOW_LEFT, medBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_ELBOW_LEFT, (unsigned int)NUI_SKELETON_POSITION_WRIST_LEFT, medBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_WRIST_LEFT, (unsigned int)NUI_SKELETON_POSITION_HAND_LEFT, shortBoneCount );
 
     // Right Arm
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_SHOULDER_RIGHT, (JointType)NUI_SKELETON_POSITION_ELBOW_RIGHT, medBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_ELBOW_RIGHT, (JointType)NUI_SKELETON_POSITION_WRIST_RIGHT, medBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_WRIST_RIGHT, (JointType)NUI_SKELETON_POSITION_HAND_RIGHT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_SHOULDER_RIGHT, (unsigned int)NUI_SKELETON_POSITION_ELBOW_RIGHT, medBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_ELBOW_RIGHT, (unsigned int)NUI_SKELETON_POSITION_WRIST_RIGHT, medBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_WRIST_RIGHT, (unsigned int)NUI_SKELETON_POSITION_HAND_RIGHT, shortBoneCount );
 
     // Left Leg
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_LEFT, (JointType)NUI_SKELETON_POSITION_KNEE_LEFT, longBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_KNEE_LEFT, (JointType)NUI_SKELETON_POSITION_ANKLE_LEFT, longBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_ANKLE_LEFT, (JointType)NUI_SKELETON_POSITION_FOOT_LEFT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_HIP_LEFT, (unsigned int)NUI_SKELETON_POSITION_KNEE_LEFT, longBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_KNEE_LEFT, (unsigned int)NUI_SKELETON_POSITION_ANKLE_LEFT, longBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_ANKLE_LEFT, (unsigned int)NUI_SKELETON_POSITION_FOOT_LEFT, shortBoneCount );
 
     // Right Leg
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_HIP_RIGHT, (JointType)NUI_SKELETON_POSITION_KNEE_RIGHT, longBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_KNEE_RIGHT, (JointType)NUI_SKELETON_POSITION_ANKLE_RIGHT, longBoneCount );
-    addSkelicles( (JointType)NUI_SKELETON_POSITION_ANKLE_RIGHT, (JointType)NUI_SKELETON_POSITION_FOOT_RIGHT, shortBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_HIP_RIGHT, (unsigned int)NUI_SKELETON_POSITION_KNEE_RIGHT, longBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_KNEE_RIGHT, (unsigned int)NUI_SKELETON_POSITION_ANKLE_RIGHT, longBoneCount );
+    addSkelicles( (unsigned int)NUI_SKELETON_POSITION_ANKLE_RIGHT, (unsigned int)NUI_SKELETON_POSITION_FOOT_RIGHT, shortBoneCount );
 
 #else
 
@@ -141,14 +141,14 @@ void Skeleton::update( NUI_SKELETON_DATA skeletonData )
 	mHeadScale = DBCClient::get()->getFloatParam("skeletonHeadScale");
 	
 	// update and smooth joint positions
-	for (int j = 0; j < JointType_Count; ++j)
+	for (unsigned int j = 0; j < 25; ++j)
 	{	
 		Vec3f jointPos = Vec3f(skeletonData.SkeletonPositions[j].x, skeletonData.SkeletonPositions[j].y, skeletonData.SkeletonPositions[j].z);
 		if (!mSmoothOnlyHands)
-			mJointPositions[(JointType)j] = (jointPos * mBodyCoordScale + mBodyCoordOffset) * (1.0f - mSmoothAmount) + mJointPositions[(JointType)j] * mSmoothAmount;
+			mJointPositions[j] = (jointPos * mBodyCoordScale + mBodyCoordOffset) * (1.0f - mSmoothAmount) + mJointPositions[j] * mSmoothAmount;
 		else
-			mJointPositions[(JointType)j] = (jointPos * mBodyCoordScale + mBodyCoordOffset);
-		mJointPositions[(JointType)j].z = 0.0f;
+			mJointPositions[j] = (jointPos * mBodyCoordScale + mBodyCoordOffset);
+		mJointPositions[j].z = 0.0f;
 	}
 }
 
@@ -189,7 +189,7 @@ void Skeleton::update( IBody* pBody )
 
 #endif
 
-void Skeleton::update( const Vec3f farJoints[JointType_Count] )
+void Skeleton::update( const Vec3f farJoints[25] )
 {
 	mBodyCoordScale = Vec3f( DBCClient::get()->getFloatParam("skeletonFarPosScaleX"), 
 		DBCClient::get()->getFloatParam("skeletonFarPosScaleY"), 
@@ -203,20 +203,20 @@ void Skeleton::update( const Vec3f farJoints[JointType_Count] )
 	mHeadScale = DBCClient::get()->getFloatParam("skeletonHeadScale");
 	
 	// update and smooth joint positions
-	for (int j=0; j < JointType_Count; j++)
+	for (unsigned int j=0; j < 25; j++)
 	{
-		mJointPositions[(JointType)j] = farJoints[j];
+		mJointPositions[j] = farJoints[j];
 	}	
 }
 
-void Skeleton::drawBone( JointType jointType1, JointType jointType2 )
+void Skeleton::drawBone( unsigned int jointIdx1, unsigned int jointIdx2 )
 {
 	// draw elongated box between joint points
-	Vec3f between = getJointPos(jointType2) - getJointPos(jointType1);
+	Vec3f between = getJointPos(jointIdx2) - getJointPos(jointIdx1);
 	float dist = between.length();
 
 	Matrix44f mat;
-	mat.translate( getJointPos(jointType1) + (between / 2.0f) ); 
+	mat.translate( getJointPos(jointIdx1) + (between / 2.0f) ); 
 	mat *= Matrix44f::createRotation( Vec3f::zAxis(), between.normalized(), Vec3f::yAxis() );
 	mat.scale( Vec3f(mScale, mScale, dist) ); 
 
@@ -231,35 +231,35 @@ void Skeleton::draw()
 	{
 		// draw bones
 		//drawBone( JointType_Head, JointType_Neck );
-		drawBone( JointType_Neck, JointType_SpineShoulder );
-		drawBone( JointType_SpineShoulder, JointType_SpineMid );
-		drawBone( JointType_SpineMid, JointType_SpineBase );
-		drawBone( JointType_SpineShoulder, JointType_ShoulderRight );
-		drawBone( JointType_SpineShoulder, JointType_ShoulderLeft );
-		drawBone( JointType_SpineBase, JointType_HipRight );
-		drawBone( JointType_SpineBase, JointType_HipLeft );
+		drawBone( 2, 20 );
+		drawBone( 20, 1 );
+		drawBone( 1, 0 );
+		drawBone( 20, 8 );
+		drawBone( 20, 4 );
+		drawBone( 0, 16 );
+		drawBone( 0, 12 );
 
 		// Right Arm
-		drawBone( JointType_ShoulderRight, JointType_ElbowRight );
-		drawBone( JointType_ElbowRight, JointType_WristRight );
-		drawBone( JointType_WristRight, JointType_HandRight );
-		drawBone( JointType_HandRight, JointType_HandTipRight );
+		drawBone( 8, 9 );
+		drawBone( 9, 10 );
+		drawBone( 10, 11 );
+		drawBone( 11, 23 );
 
 		// Left Arm
-		drawBone( JointType_ShoulderLeft, JointType_ElbowLeft );
-		drawBone( JointType_ElbowLeft, JointType_WristLeft );
-		drawBone( JointType_WristLeft, JointType_HandLeft );
-		drawBone( JointType_HandLeft, JointType_HandTipLeft );
+		drawBone( 4, 5 );
+		drawBone( 5, 6 );
+		drawBone( 6, 7 );
+		drawBone( 7, 21 );
 
 		// Right Leg
-		drawBone( JointType_HipRight, JointType_KneeRight );
-		drawBone( JointType_KneeRight, JointType_AnkleRight );
-		drawBone( JointType_AnkleRight, JointType_FootRight );
+		drawBone( 16, 17 );
+		drawBone( 17, 18 );
+		drawBone( 18, 19 );
 
 		// Left Leg
-		drawBone( JointType_HipLeft, JointType_KneeLeft );
-		drawBone( JointType_KneeLeft, JointType_AnkleLeft );
-		drawBone( JointType_AnkleLeft, JointType_FootLeft );
+		drawBone( 12, 12 );
+		drawBone( 13, 14 );
+		drawBone( 14, 15 );
 	}
 
 	Matrix44f sphereMat;
@@ -269,13 +269,13 @@ void Skeleton::draw()
 	if ( DBCClient::get()->getBoolParam("skeletonDrawHands") )
 	{
 		// draw left hand
-		sphereMat.setToIdentity();  sphereMat.translate( getJointPos( JointType_HandLeft ) );
+		sphereMat.setToIdentity();  sphereMat.translate( getJointPos( 7 ) );
 		sphereMat.rotate( Vec3f( (float)getElapsedSeconds(), (float)getElapsedSeconds(), 0.0f ) );
 		ShaderManager::get("sphere")->uniform( "matrix", sphereMat );
 		gl::drawCube( Vec3f(0.0f, 0.0f, 0.0f), Vec3f(cubeSize, cubeSize, cubeSize) );
 
 		// draw right hand
-		sphereMat.setToIdentity();  sphereMat.translate( getJointPos( JointType_HandRight ) );
+		sphereMat.setToIdentity();  sphereMat.translate( getJointPos( 11 ) );
 		sphereMat.rotate( Vec3f( (float)getElapsedSeconds(), (float)getElapsedSeconds(), 0.0f ) );
 		ShaderManager::get("sphere")->uniform( "matrix", sphereMat );
 		ShaderManager::get("sphere")->uniform( "color", Vec3f(1.0f, 0.0f, 0.0f) );
@@ -285,14 +285,14 @@ void Skeleton::draw()
 	// draw head
 	if ( DBCClient::get()->getBoolParam("skeletonDrawHead") )
 	{
-		sphereMat.setToIdentity();  sphereMat.translate( getJointPos( JointType_Head ) );
+		sphereMat.setToIdentity();  sphereMat.translate( getJointPos( 3 ) );
 		sphereMat.rotate( Vec3f( (float)getElapsedSeconds(), (float)getElapsedSeconds(), 0.0f ) );
 		ShaderManager::get("sphere")->uniform( "matrix", sphereMat );
 		gl::drawSphere( Vec3f(0.0f, 0.0f, 0.0f), mHeadScale, 64);
 	}
 }
 
-Vec3f Skeleton::getJointPos( JointType jointType )
+Vec3f Skeleton::getJointPos( unsigned int jointType )
 {
 	return mJointPositions[jointType];
 }
@@ -418,18 +418,18 @@ void Skeleton::updateSkelicles(Room& room, int skeletonCount, int farSkeletonCou
 	ShaderManager::get("skelicleUpdate")->uniform( "colors", 4 );
 
 	// pass in ALL skeleton positions
-	Vec3f skeletonPositions[6 * JointType_Count];
+	Vec3f skeletonPositions[6 * 25];
 	for (int s=0; s<skeletonCount; s++)
 	{
-		for (int j=0; j<JointType_Count; j++)
-			skeletonPositions[s*JointType_Count + j] = skeletons[s].getJointPos((JointType)j);
+		for (unsigned int j=0; j<25; j++)
+			skeletonPositions[s*25 + j] = skeletons[s].getJointPos(j);
 	}
 	for (int s=0; s<farSkeletonCount; s++)
 	{
-		for (int j=0; j<JointType_Count; j++)
-			skeletonPositions[(s + 3)*JointType_Count + j] = farSkeletons[s].getJointPos((JointType)j);
+		for (unsigned int j=0; j<25; j++)
+			skeletonPositions[(s + 3)*25 + j] = farSkeletons[s].getJointPos(j);
 	}
-	ShaderManager::get("skelicleUpdate")->uniform( "skeletonPositions", skeletonPositions, 6 * JointType_Count );
+	ShaderManager::get("skelicleUpdate")->uniform( "skeletonPositions", skeletonPositions, 6 * 25 );
 
 	ShaderManager::get("skelicleUpdate")->uniform( "skeletonCount", skeletonCount );
 	ShaderManager::get("skelicleUpdate")->uniform( "farSkeletonCount", farSkeletonCount );
@@ -469,7 +469,7 @@ void Skeleton::drawSkelicles(Room& room, SpringCam& camera)
 }
 
 // add skelicles along bone
-void Skeleton::addSkelicles(JointType jointType1, JointType jointType2, unsigned int count, float offsetAmount)
+void Skeleton::addSkelicles(unsigned int jointIdx1, unsigned int jointIdx2, unsigned int count, float offsetAmount)
 {
 	gl::disableAlphaBlending();
 	gl::setMatricesWindow( mSkelicleFbo.getSize(), false ); // false to prevent vertical flipping
@@ -489,8 +489,8 @@ void Skeleton::addSkelicles(JointType jointType1, JointType jointType2, unsigned
 		int yPos = index % SKELICLES_SIDE;
 
 		float skeletonIndex = (float)mIndex/255.0f;
-		float joint1Idx = (float)jointType1/255.0f;
-		float joint2Idx = (float)jointType2/255.0f;
+		float joint1Idx = (float)jointIdx1/255.0f;
+		float joint2Idx = (float)jointIdx2/255.0f;
 		float jointLerp = (float)i/(float)count;
 
 		ShaderManager::get("skelicleAdd")->uniform( "pos", Rand::randVec3f() * 100.0f);

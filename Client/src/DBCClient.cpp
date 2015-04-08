@@ -341,8 +341,8 @@ void DBCClient::updateBodies()
 	for ( unsigned int b = 0; b < mFarSkeletonCount; b++ ) 
 	{
 		if (b >= DBC_BODY_COUNT) break;
-		mFarLeftEmitter[b].setPos(mFarJoints[b][JointType_HandLeft]);
-		mFarRightEmitter[b].setPos(mFarJoints[b][JointType_HandRight]);
+		mFarLeftEmitter[b].setPos(mFarJoints[b][7]);
+		mFarRightEmitter[b].setPos(mFarJoints[b][11]);
 	}
 	for ( unsigned int b = 0; b < mSkeletonCount; b++ ) 
 	{
@@ -365,8 +365,8 @@ void DBCClient::updateBodies()
 	// update emitters
 	for ( unsigned int i=0; i < mSkeletonCount; i++ )
 	{
-		mLeftEmitter[i].setPos( mSkeletons[i].getJointPos( JointType_HandLeft ) );
-		mRightEmitter[i].setPos( mSkeletons[i].getJointPos( JointType_HandRight ) );
+		mLeftEmitter[i].setPos( mSkeletons[i].getJointPos( 7 ) );
+		mRightEmitter[i].setPos( mSkeletons[i].getJointPos( 11 ) );
 		allEmitters.push_back(&mLeftEmitter[i]);
 		allEmitters.push_back(&mRightEmitter[i]);
 	}
@@ -412,11 +412,11 @@ void DBCClient::updateBodies()
 			if (b >= DBC_BODY_COUNT) break;
 
 			// send all joints
-			for (int j=0; j < JointType_Count; j++)
+			for (unsigned int j=0; j < 25; j++)
 			{
-				message.addFloatArg( mSkeletons[b].getJointPos( (JointType)j ).x );
-				message.addFloatArg( mSkeletons[b].getJointPos( (JointType)j ).y );
-				message.addFloatArg( mSkeletons[b].getJointPos( (JointType)j ).z );
+				message.addFloatArg( mSkeletons[b].getJointPos( j ).x );
+				message.addFloatArg( mSkeletons[b].getJointPos( j ).y );
+				message.addFloatArg( mSkeletons[b].getJointPos( j ).z );
 			}
 		}
 	}
@@ -768,11 +768,11 @@ void DBCClient::onOSCMessage(osc::Message message)
 
 		for (unsigned int b=0; b < mFarSkeletonCount; b++)
 		{
-			for (int j=0; j < JointType_Count; j++)
+			for (int j=0; j < 25; j++)
 			{
-				mFarJoints[b][j] = Vec3f(message.getArgAsFloat( b * JointType_Count * 3 + j * 3 + 2, true ),
-										 message.getArgAsFloat( b * JointType_Count * 3 + j * 3 + 3, true ),
-										 message.getArgAsFloat( b * JointType_Count * 3 + j * 3 + 4, true ));
+				mFarJoints[b][j] = Vec3f(message.getArgAsFloat( b * 25 * 3 + j * 3 + 2, true ),
+										 message.getArgAsFloat( b * 25 * 3 + j * 3 + 3, true ),
+										 message.getArgAsFloat( b * 25 * 3 + j * 3 + 4, true ));
 				mFarJoints[b][j].z = mRoom.getDims().z * 2.0f;
 			}
 		}

@@ -21,9 +21,9 @@
 class Skeleton
 {
 	unsigned int mIndex;
-	std::map< JointType, ci::Vec3f > mJointPositions;
+	std::map< unsigned int, ci::Vec3f > mJointPositions;
 	ci::Vec3f	mBodyCoordScale, mBodyCoordOffset;
-	HandState mLeftHandState, mRightHandState;
+	bool mLeftHandState, mRightHandState;
 	float	mSmoothAmount;
 	bool	mSmoothOnlyHands;
 	float	mScale;
@@ -34,11 +34,11 @@ class Skeleton
 	static PingPongFbo			mSkelicleFbo;
     static ci::gl::VboMesh		mSkelicleVbo;
 
-	void	drawBone( JointType jointType1, JointType jointType2 );
+	void	drawBone( unsigned int jointIdx1, unsigned int jointIdx2 );
 
 	static void	setupSkelicleFbo();
 	static void	setupSkelicleVbo();
-	void	addSkelicles(JointType jointType1, JointType jointType2, unsigned int count, float offsetAmount = 1.0f);
+	void	addSkelicles(unsigned int jointIdx1, unsigned int jointIdx2, unsigned int count, float offsetAmount = 1.0f);
 
   public:
 	Skeleton() {}
@@ -49,9 +49,9 @@ class Skeleton
 	static void	drawSkelicles(Room& room, SpringCam& camera);
 	void addSkelicles();
 
-	ci::Vec3f	getJointPos( JointType jointType );
-	HandState	getLeftHandState() { return mLeftHandState; }
-	HandState	getRightHandState() { return mRightHandState; }
+	ci::Vec3f	getJointPos( unsigned int jointType );
+	bool		getLeftHandState() { return mLeftHandState; }
+	bool		getRightHandState() { return mRightHandState; }
 
 #if USE_KINECT1
 	void	update( NUI_SKELETON_DATA skeletonData );
@@ -59,6 +59,6 @@ class Skeleton
 	void	update( IBody* pBody );
 #endif
 	
-	void	update( const ci::Vec3f farJoints[JointType_Count] );
+	void	update( const ci::Vec3f farJoints[25] );
 	void	draw();
 };

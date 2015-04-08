@@ -69,7 +69,7 @@ class DBCClient : public ci::app::AppBasic
 	// far skeletons
 	Skeleton					mFarSkeletons[DBC_BODY_COUNT];
 	unsigned int				mFarSkeletonCount;
-	Vec3f						mFarJoints[DBC_BODY_COUNT][JointType_Count];
+	Vec3f						mFarJoints[DBC_BODY_COUNT][25];
 	
 	// enitters
 	Emitter						mMouseEmitter, mFarMouseEmitter;
