@@ -8,12 +8,8 @@ SET FILESWITCHES=/v /np /njs /njh /bytes /fft /ndl
 SET TARGET=..\builds\%BUILD_ID%\archive\
 ECHO %BUILD_NUMBER% > %TARGET%\BUILD_%BUILD_NUMBER%
 
-ROBOCOPY Client\vc2012\Release\ %TARGET%\Client %DIRSWITCHES%
+ROBOCOPY Client\vc2012\Release\bin %TARGET%\Client %DIRSWITCHES%
 ROBOCOPY Server %TARGET%\Server %DIRSWITCHES%
-
-del %TARGET%\Client\*.obj /s /q
-del %TARGET%\Client\*.tlog /s /q
-del %TARGET%\Client\*.pdb /s /q
 
 EXIT /B 0
 
