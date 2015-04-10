@@ -9,6 +9,7 @@ SET TARGET=..\builds\%BUILD_ID%\archive\
 ECHO %BUILD_NUMBER% > %TARGET%\BUILD_%BUILD_NUMBER%
 
 ROBOCOPY Client\vc2012\bin %TARGET%\Client %DIRSWITCHES%
+ROBOCOPY Client\assets %TARGET%\Client\assets %DIRSWITCHES%
 ROBOCOPY Server %TARGET%\Server %DIRSWITCHES%
 cd %TARGET%\Server
 npm install
