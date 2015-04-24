@@ -1,5 +1,5 @@
 {
-    "defaults": {
+    "ms-2": {
         "roomTextureSide": "side-c.jpg",
         "skeletonAlpha": 0.5,
         "skeletonScale": 1,
@@ -21,7 +21,7 @@
         "screenOverlay": "overlay_STM_TR.png",
         "topColor": "660000"
     },
-    "ms-2": {
+    "defaults": {
         "roomTextureSide": "chevron-green.jpg",
         "skeletonAlpha": 0.5,
         "skeletonScale": 20,
